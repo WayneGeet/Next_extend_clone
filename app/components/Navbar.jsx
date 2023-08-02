@@ -14,12 +14,15 @@ const Navbar = () => {
     exit: { opacity: 0, scale: 0.8, transition: { duration: 0.3 } }
   };
   
-  const barVariants = {
-    hidden:{scale:"0px"},
-    visible:{scale:"20px", transition:{duration:1}},
-    exit:{scale:"0px"}
+  const buttonVariant = {
+    hidden:{opacity:0, y:10},
+    visible:{opacity:1, y:0, transition:{
+      duration:0.7, delay:0.5
+    }}
   }
+
   const [isHid, setIsHid] = useState(true);
+
   return (
     <nav className="flex justify-center items-center fixed top-[10px] left-1/2 -translate-x-1/2 z-50 w-full
     px-10 lg:w-fit">
@@ -79,7 +82,11 @@ const Navbar = () => {
 
             
 
-            <button type="button" className="hidden lg:inline-block whitespace-nowrap text-sm bg-[#222] rounded-xl cursor-pointer px-3 py-2 text-white">Get Started</button>
+            <motion.button
+            variants={buttonVariant}
+            initial="hidden"
+            animate="visible"
+            type="button" className="hidden lg:inline-block whitespace-nowrap text-sm bg-[#222] rounded-xl cursor-pointer px-3 py-2 text-white">Get Started</motion.button>
 
         </motion.div>
     </nav>
